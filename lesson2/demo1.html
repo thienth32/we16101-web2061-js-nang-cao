@@ -1,0 +1,39 @@
+<input type="text" onkeyup="search(this)">
+<ul></ul>
+<script>
+    let arr = [
+        "nguyễn văn a",
+        "nguyễn văn b",
+        "nguyễn văn c"
+    ];
+
+    let content = arr.map(item => {
+        return `<li onclick="remove('${item}')">${item}</li>`;
+    }).join('');
+
+    document.querySelector('ul').innerHTML = content;
+    function remove(name){
+        let filterRs = arr.filter(function(item){
+            return item != name;
+        });
+        let content = filterRs.map(item => {
+            return `<li onclick="remove('${item}')">${item}</li>`;
+        }).join('');
+
+        document.querySelector('ul').innerHTML = content;
+    }
+    function search(el){
+        let value = el.value;
+        let filterRs = arr.filter(function(item){
+            return value == item;
+        });
+
+        let content = filterRs.map(item => {
+            return `<li onclick="remove('${item}')">${item}</li>`;
+        }).join('');
+
+        document.querySelector('ul').innerHTML = content;
+        
+    }
+
+</script>

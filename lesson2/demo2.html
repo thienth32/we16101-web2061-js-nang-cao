@@ -1,0 +1,30 @@
+<ul></ul>
+<script>
+    
+    var arr = [
+        {
+            id: 1,
+            name: "nguyễn văn a",
+            gender: 1
+        },
+        {
+            id: 2,
+            name: "trần văn b",
+            gender: 2
+        },
+        {
+            id: 3,
+            name: "đặng văn c",
+            gender: 2
+        }
+    ];
+
+    // biến đổi dữ liệu từ mảng gốc sang 1 mảng mới chứa chuỗi
+    let divContent = arr.map(function(item) {
+        return `<li>${item.id} - ${item.name} - ${item.gender == 1 ? "nam"  : "nữ"}</li>`;
+    }).join('');
+    console.log(divContent);
+    // thay đổi html của thẻ ul => nội dung
+    document.querySelector('ul').innerHTML = divContent;
+
+</script>

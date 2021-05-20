@@ -1,0 +1,16 @@
+<input type="text" name="name" onkeyup="getname()">
+
+<p>Hello world!</p>
+<script>
+    let pTag = document.querySelector('p');
+    setTimeout(function(){
+        pTag.style.backgroundColor = 'green';
+        pTag.style.color = 'white';
+        pTag.innerText = "WE16101 - WEB2061 Lập trình javascript nâng cao";
+    }, 3000);
+
+    function getname(){
+        let textValue = document.querySelector('input').value;
+        pTag.innerText = textValue;
+    }
+</script>

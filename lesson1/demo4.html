@@ -1,0 +1,28 @@
+<button>Click me!</button>
+<br>
+<button>Click me!</button>
+<br><button>Click me!</button>
+<br><button>Click me!</button>
+<br><button>Click me!</button>
+<br><button>Click me!</button>
+<br><button>Click me!</button>
+<br><button>Click me!</button>
+<br><button>Click me!</button>
+<br><button>Click me!</button>
+<br><button>Click me!</button>
+<br>
+thẻ button sinh ra bằng js
+<div></div>
+<script>
+    setTimeout(function(){
+        document.querySelector('div').innerHTML = '<button onclick="console.log(2);">Click me!</button>';
+    }, 3000);
+
+    let listBtn = document.querySelectorAll('button');
+    for (let i = 0; i < listBtn.length; i++) {
+        const element = listBtn[i];
+        element.onclick = function(){
+            console.log(1);
+        }
+    }
+</script>

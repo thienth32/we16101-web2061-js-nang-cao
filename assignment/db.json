@@ -1,0 +1,40 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Chuột máy tính"
+    },
+    {
+      "id": 2,
+      "name": "Bàn phím"
+    },
+    {
+      "id": 3,
+      "name": "Bàn phím cơ"
+    },
+    {
+      "id": 4,
+      "name": "Laptop HP"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "majestouch 2",
+      "categoryId": 3,
+      "price": 3200000,
+      "detail": "Bàn phím cơ nhập khẩu từ hàn cuốc",
+      "image": "https://d1vm37nfym7tjl.cloudfront.net/web/image/product.image/195/image_1024/B%C3%A0n%20ph%C3%ADm%20c%C6%A1%20Filco%20Majestouch%202%20%28Tenkeyless%29?unique=efdbd46"
+    },
+    {
+      "id": 2,
+      "name": "Logitech M590",
+      "categoryId": 1,
+      "price": 590000,
+      "detail": "Chuột xịn",
+      "image": "https://cf.shopee.vn/file/4183bad194fb97a1ee9441c7c3c9af51"
+    }
+  ],
+  "orders": [],
+  "order_detail": []
+}

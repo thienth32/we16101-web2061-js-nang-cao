@@ -1,0 +1,16 @@
+<form action="" onsubmit="submitAction(event)">
+    <input type="text" name="name">
+    <br>
+    <input type="text" name="age">
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    function submitAction(event){
+        // ngăn chặn việc trình duyệt xử lý hành động mặc định của thẻ
+        event.preventDefault();
+        console.log(document.querySelector('[name="name"]').value);
+        console.log(document.querySelector('[name="age"]').value);
+    }
+</script>

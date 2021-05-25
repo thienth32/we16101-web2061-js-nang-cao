@@ -1,0 +1,26 @@
+<script src="./moment.min.js"></script>
+<script>
+    // ngày tổ chức giải đấu 2021-07-14
+    // let now = moment();
+    // let birthDay = moment("2000-01-01");
+    // let ngayToChuc = moment("2024-07-14");
+    // console.log(birthDay.format("DD-MM-YYYY"));
+    // console.log(ngayToChuc.diff(birthDay, 'year'));
+    function VanDongVien(ma_van_dong_vien, ho_va_ten, ngay_sinh, giai_thuong) {
+        this.ma_van_dong_vien = ma_van_dong_vien;
+        this.ho_va_ten = ho_va_ten;
+        this.ngay_sinh = ngay_sinh;
+        this.giai_thuong = giai_thuong;
+        this.KiemTraDieuKien = function(ngay_to_chuc, so_tuoi_yc) {
+
+            let ngay_sinh = moment(this.ngay_sinh);
+            let ngay_thi_dau = moment(ngay_to_chuc);
+            let sotuoi = ngay_thi_dau.diff(ngay_sinh, 'year');
+            return sotuoi <= so_tuoi_yc;
+        }
+    }
+
+    var pthanh = new VanDongVien('123', 'phạm thị thanh', '2000-11-05', 'A')
+    console.log(pthanh.KiemTraDieuKien("2024-12-23", "18"));
+    
+</script>

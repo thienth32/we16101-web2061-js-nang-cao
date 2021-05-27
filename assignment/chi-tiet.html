@@ -41,16 +41,17 @@
         // lấy ra sản phẩm dựa vào id
         fetch(`http://localhost:3000/products/${productId}`)
         .then(reponseData => reponseData.json())
-        .then(data => {
+        .then(productData => {
             // sản phẩm
             // data.categoryId => mã danh mục
-            console.log(data);
+            console.log(productData);
+            fetch(`http://localhost:3000/products?categoryId=${productData.categoryId}`)
+            .then(reponseData => reponseData.json())
+            .then(relateProducts => {
+                console.log(relateProducts);
+            });
         });
-        fetch(`http://localhost:3000/products?categoryId=${productId}`)
-        .then(reponseData => reponseData.json())
-        .then(data => {
-            console.log(data);
-        });
+        
     </script>
 </body>
 </html>

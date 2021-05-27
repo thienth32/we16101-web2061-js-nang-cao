@@ -1,0 +1,29 @@
+<script src="./moment.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function VanDongVien(ma_van_dong_vien, ho_va_ten, ngay_sinh, giai_thuong = []){
+        this.ma_van_dong_vien = ma_van_dong_vien;
+        this.ho_va_ten = ho_va_ten;
+        this.ngay_sinh = ngay_sinh;
+        this.giai_thuong = giai_thuong;
+        this.kiemTraDieuKien = function(ngay_to_chuc, so_tuoi){
+            let mmNgaySinh = moment(this.ngay_sinh);
+            let mmNgayThiDau = moment(ngay_to_chuc);
+
+            let tuoiVdv = mmNgayThiDau.diff(mmNgaySinh, 'months');
+            return tuoiVdv <= (so_tuoi*12)
+        };
+
+        this.themGiaiThuong = function(giai_thuong_moi){
+            this.giai_thuong.push(giai_thuong_moi);
+        };
+
+        this.danhSachGiaiThuong = function(){
+            return this.giai_thuong;
+        };
+
+    }
+
+    let thanh = new VanDongVien('001', 'Phạm Thị Thanh', '2001-04-24');
+    console.log(thanh.kiemTraDieuKien('2020-09-05', 20));
+    thanh.themGiaiThuong('vận động viên xuất sắc');
+</script>

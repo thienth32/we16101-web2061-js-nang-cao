@@ -24,6 +24,11 @@
     <main>
         <div class="container-fluid">
             <h2>Danh sách sản phẩm</h2>
+            <div class="product-item">
+
+            </div>
+            
+            
             <!-- hiển thị đc thông tin của sản phẩm dựa vào id trên đường dẫn -->
             <!-- hiển thị đc 4 sản phẩm cùng danh mục với sản phẩm đang hiển thị -->
             
@@ -39,6 +44,12 @@
 
         // arrow function es6
         app.getMenu();
+        function removeProduct(id){
+            console.log(id)
+            // lấy id
+            // gửi request lên json server để xóa dữ liệu
+            // điều hướng về trang chủ
+        }
         async function getProductData(){
             const productId = app.getQueryStringParam('id');
             const product = await fetch(`http://localhost:3000/products/${productId}`)
@@ -46,7 +57,11 @@
             console.log(product);
             const relateProducts = await fetch(`http://localhost:3000/products?categoryId=${product.categoryId}&id_ne=${productId}`)
                                         .then(response => response.json());
-            console.log(relateProducts);
+            // console.log(relateProducts);
+            let productContent = `<h2>${product.name}</h2>
+                                    <a href="edit-san-pham.html?id=${product.id}">Sửa</a>
+                                    <a href="javascript:void(0);" onclick="removeProduct(${product.id})">Xóa</a>`;
+            document.querySelector('.product-item').innerHTML = productContent
         }
         
         getProductData();

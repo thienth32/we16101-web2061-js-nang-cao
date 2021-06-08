@@ -3,7 +3,16 @@
 <script>
     function sendAjaxRequest(){
         let keyword = document.querySelector('input').value;
-        
+        const formData = new FormData();
+        formData.append('keyword', keyword);
+        fetch('http://localhost/web206-api/test.php', {
+            method: 'post',
+            body: formData
+        })
+        .then(resp => resp.json())
+        .then(responseData => {
+            console.log(responseData);
+        })
     }
 
 </script>

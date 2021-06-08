@@ -1,0 +1,10 @@
+    <input id="target" type="text" value="Hello there">
+  <div id="other">
+    Trigger the handler
+  </div>
+<script src="jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $( "#target" ).keydown(function(event) {
+        console.log(event.keyCode);
+    });
+</script>

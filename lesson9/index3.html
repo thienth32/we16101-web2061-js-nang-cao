@@ -1,0 +1,15 @@
+<script>
+const waitFor = (delay, msg) => new Promise(resolve => setTimeout(() => {
+    console.log(msg);
+    resolve
+}, delay));
+async function xxx(){
+    
+    await waitFor(3000, 'thức dậy');
+    await waitFor(3000, 'thức dậy');
+}
+xxx();
+
+
+
+</script>

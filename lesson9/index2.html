@@ -1,0 +1,25 @@
+<script>
+    let productId = 5;
+    // lấy tt của sp dựa vào ID
+    new Promise(resolve => {
+        fetch('http://localhost:3000/products/' + productId)
+        .then(resp => {
+            resolve(resp.json())
+        })
+    })
+    .then(product => {
+        // lấy tt của các sp cùng danh mục với sp đã lấy ở trên
+        console.log(product.categoryId);
+        return new Promise(resolve => {
+            fetch('http://localhost:3000/products?categoryId=' + product.categoryId)
+            .then(lstProduct => resolve(lstProduct.json()))
+        })
+        
+    })
+    .then(data => {
+        console.log(data);
+    })
+
+
+
+</script>

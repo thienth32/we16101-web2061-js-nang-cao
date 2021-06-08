@@ -1,0 +1,43 @@
+<script>
+    // let prom = new Promise(function(resolve, reject){
+    //     setTimeout(function(){
+    //         console.log(1);
+    //         resolve('Đã đi làm kiếm tiền rất vất vả, sau đó đã mua đc vòng vàng, và đã tặng vợ');
+    //     }, 3000);
+    // });
+
+    // prom.then(function(msg){
+    //     console.log(msg);
+    //     console.log('đã đem vòng vàng tặng con dâu');
+    // })
+
+    // hiển thị các message sau theo thời gian được quy định
+    // sau 2s đầu tiên thì hiển thị "thức dậy"
+    // sau 3s tiếp theo thì hiển thị "đánh răng"
+    // sau 1s tiếp theo thì hiển thị "đi học"
+
+    // let pr = 
+
+    new Promise(resolve => {
+        setTimeout(() => {
+            console.log('thức dậy');
+            resolve()
+        }, 2000)
+    })
+    .then(() => {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                console.log('đánh răng');
+                resolve()
+            }, 3000)
+        })
+    })
+    .then(() => {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                console.log('đi học');
+                resolve()
+            }, 1000)
+        })
+    })
+</script>

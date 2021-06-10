@@ -1,0 +1,27 @@
+<input type="checkbox" value="1"> java
+<br>
+<input type="checkbox" value="2"> C sharp
+<br> 
+<input type="checkbox" value="3"> php
+<br>
+<input type="checkbox" value="4"> javascript
+<br>
+
+
+<script src="./jquery.min.js" type="text/javascript"></script>
+<script>
+    let listSubject = [];
+    $('input[type="checkbox"]').click(function(){
+
+        if($(this).is(':checked')){
+            listSubject.push($(this).val());
+        }else{
+            let checkboxVal = $(this).val();
+            listSubject = listSubject.filter(function(item) {
+                return item != checkboxVal;
+            })
+        }
+
+        console.log(listSubject);
+    })
+</script>

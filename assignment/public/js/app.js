@@ -12,6 +12,9 @@ window.app = {
                             <a class="nav-link" href="danh-muc.html?id=${element.id}"> ${element.name} </a>
                         </li>`; 
             }).join('');
+            menuContent += `<li class="nav-item active">
+                                <a id="menu_cart_total" class="nav-link" href="gio-hang.html"> Giỏ hàng(${this.getTotalItemOnCart()})</a>
+                            </li>`;
             document.querySelector('#navbar_content').innerHTML = menuContent;
         })
     },
@@ -31,6 +34,12 @@ window.app = {
                                 <p class="card-text">${element.detail}</p>
                                 <p class="card-text">${element.price}</p>
                                 <a href="chi-tiet.html?id=${element.id}" class="btn btn-primary">Chi tiết</a>
+                                <button class="btn btn-warning" onclick="app.add2Cart(${element.id}, 
+                                                                                        '${element.name}', 
+                                                                                        '${element.image}', 
+                                                                                        ${element.price}, 
+                                                                                        ${element.categoryId}, 
+                                                                                        '${element.category.name}')">Thêm giỏ hàng</button>
                                 </div>
                             </div>
                         </div>`; 
@@ -41,5 +50,51 @@ window.app = {
     getQueryStringParam: function(name){
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(name);
+    },
+    add2Cart: function(id, name, image, price, cateId, cate_name){
+        let cartStorage = sessionStorage.getItem('cart');
+        let screenCart = null;
+        if(cartStorage == null){
+            screenCart = [];
+        }else{
+            screenCart = JSON.parse(cartStorage);
+        }
+        
+        let item = {
+            id: id,
+            name: name,
+            image: image,
+            price: price,
+            cateId: cateId,
+            cate_name: cate_name
+        };
+
+        let existed = screenCart.findIndex(ele => ele.id == item.id);
+
+        if(existed == -1){
+            item.quantity = 1;
+            screenCart.push(item);            
+        }else{
+            screenCart[existed].quantity++;
+        }
+
+        sessionStorage.setItem('cart', JSON.stringify(screenCart));
+        document.querySelector('a#menu_cart_total').innerText = `Giỏ hàng (${this.getTotalItemOnCart()})`;
+        alert("Cập nhật sản phẩm vào giỏ hàng thành công!");
+    },
+    getTotalItemOnCart: function(){
+        let cartStorage = sessionStorage.getItem('cart');
+        let screenCart = null;
+        if(cartStorage == null){
+            screenCart = [];
+        }else{
+            screenCart = JSON.parse(cartStorage);
+        }
+        let totalItem = 0;
+        screenCart.forEach(element => {
+            totalItem += element.quantity;
+        });
+
+        return totalItem;
     }
 }

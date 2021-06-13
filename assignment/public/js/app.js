@@ -34,7 +34,7 @@ window.app = {
                                 <p class="card-text">${element.detail}</p>
                                 <p class="card-text">${element.price}</p>
                                 <a href="chi-tiet.html?id=${element.id}" class="btn btn-primary">Chi tiết</a>
-                                <button class="btn btn-warning" onclick="app.add2Cart(${element.id}, 
+                                <button class="btn btn-warning" data-id="${element.id}" data-img="${element.image}" onclick="app.add2Cart(${element.id}, 
                                                                                         '${element.name}', 
                                                                                         '${element.image}', 
                                                                                         ${element.price}, 
@@ -52,7 +52,7 @@ window.app = {
         return urlParams.get(name);
     },
     add2Cart: function(id, name, image, price, cateId, cate_name){
-        let cartStorage = sessionStorage.getItem('cart');
+        let cartStorage = localStorage.getItem('cart');
         let screenCart = null;
         if(cartStorage == null){
             screenCart = [];
@@ -78,12 +78,12 @@ window.app = {
             screenCart[existed].quantity++;
         }
 
-        sessionStorage.setItem('cart', JSON.stringify(screenCart));
+        localStorage.setItem('cart', JSON.stringify(screenCart));
         document.querySelector('a#menu_cart_total').innerText = `Giỏ hàng (${this.getTotalItemOnCart()})`;
         alert("Cập nhật sản phẩm vào giỏ hàng thành công!");
     },
     getTotalItemOnCart: function(){
-        let cartStorage = sessionStorage.getItem('cart');
+        let cartStorage = localStorage.getItem('cart');
         let screenCart = null;
         if(cartStorage == null){
             screenCart = [];
